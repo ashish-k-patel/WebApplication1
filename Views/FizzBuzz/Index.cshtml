@@ -1,11 +1,42 @@
-﻿
+
 @{
     ViewData["Title"] = "Index";
 }
 
 <p markdown>
-# FizzBuzz
+    # FizzBuzz
 
-Write a program that prints the numbers from 1 to 100. But for multiples of three print "Fizz" instead of the number and for the multiples of five print "Buzz". 
-For numbers which are multiples of both three and five print "FizzBuzz".
+    Write a program that prints the numbers from 1 to 100. But for multiples of three print "Fizz" instead of the number and for the multiples of five print "Buzz".
+    For numbers which are multiples of both three and five print "FizzBuzz".
 </p>
+<table border="1">
+    <tr>
+        <th>Number</th>
+        <th>Text</th>
+    </tr>
+
+
+    @for (int i = 0; i <= 100; i++)
+    {
+
+        string displayNumber = i.ToString();
+        string number = i.ToString();
+        @if (i % 3 == 0)
+        {
+            displayNumber = "Fizz";
+        }
+        @if (i % 5 == 0)
+        {
+            displayNumber = "Buzz";
+        }
+        @if (i % 3 == 0 && i % 5 == 0)
+        {
+            displayNumber = "FizzBuzz";
+        }
+
+        <tr>
+            <td>@number</td>
+            <td>@displayNumber</td>
+        </tr>
+    }
+</table>
