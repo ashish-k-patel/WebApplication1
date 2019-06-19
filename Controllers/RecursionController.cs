@@ -10,10 +10,18 @@ namespace CodingTest.Controllers
 {
     public class RecursionController : Controller
     {
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    var listofLocations = LocationList;
+        //    return View(listofLocations);
+        //}
+
+        public ActionResult Index()
         {
             var listofLocations = LocationList;
-            return View(listofLocations);
+            List<Location> locations = new List<Location>();
+            locations.Add(listofLocations);
+            return View(locations);
         }
 
         private static Location LocationList = new Location
