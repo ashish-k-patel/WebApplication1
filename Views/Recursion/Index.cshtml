@@ -2,7 +2,9 @@
 @using System.Collections.Generic;
 @using System.Linq;
 @using System.Threading.Tasks;
-@model WebAppication1.Models.Location;
+@using System.Web.WebPages.Razor;
+@model List<WebAppication1.Models.Location>
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -25,63 +27,4 @@
     If it were me, I'd handle this in the Razor view, but if you have a cooler way to do it, go for it!
 </p>
 
-@Model.Name
-<table border="1">
-    <tr>
-        <th>Name</th>
-        <th></th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model.ChildrenLocations)
-    {
-        <tr>
-            <td>@item.Name</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <table border="1">
-
-                    @foreach (var region in item.ChildrenLocations)
-                    {
-                        <tr>
-                            <td>@region.Name</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <table border="1">
-
-                                    @foreach (var country in region.ChildrenLocations)
-                                    {
-                                        <tr>
-                                            <td>@country.Name</td>
-                                        </tr>
-                                    }
-                                </table>
-                            </td>
-
-
-                        </tr>
-
-                    }
-                </table>
-            </td>
-            <td></td>
-        </tr>
-        <Tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </Tr>
-
-        @*@foreach (var region in item.ChildrenLocations)
-            {
-               @region.Name
-            }*@
-    }
-
-</table>
+@Html.Raw(WebApplication1.Models.Helper.RecursiveTree(Model))
