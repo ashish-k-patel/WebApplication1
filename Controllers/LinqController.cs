@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CodingTest.Models;
 using Microsoft.AspNetCore.Mvc;
+using WebAppication1.Models;
 
 namespace CodingTest.Controllers
 {
@@ -11,9 +12,17 @@ namespace CodingTest.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            Students students = new Students();
+            students.AverageGrade = GradeList.Select(x => x.NumberGrade).Average();
+            students.StudentGradeDetail = GradeList.GroupBy(x=>x.LetterGrade).Select(g => new StudentGradeDetail()
+            {
+                LetterGread =g.Key,
+                NumberOfStudents =g.Count()
+            }).OrderBy(x=>x.LetterGread).ToList();
+            students.ListOfStudets = GradeList;
+            return View(students);
         }
-
+        
         public static List<StudentGrade> GradeList = new List<StudentGrade>
         {
             new StudentGrade { FirstName="Rosina", LastName="Pickel", NumberGrade=92, LetterGrade="A" },
