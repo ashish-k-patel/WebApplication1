@@ -1,12 +1,12 @@
-﻿
+@model WebAppication1.Models.Students;
 @{
     ViewData["Title"] = "Index";
 }
 
 <p markdown>
-# LINQ
+    # LINQ
 
-In this example, use LINQ queries to get the correct data in the `LinqController` from the `GradeList` object to return the following:
+    In this example, use LINQ queries to get the correct data in the `LinqController` from the `GradeList` object to return the following:
 
     * Average Grade Percentage for Class
     * How many students received each letter grade
@@ -14,11 +14,47 @@ In this example, use LINQ queries to get the correct data in the `LinqController
 </p>
 
 <h4>Average Grade</h4>
-<p>RESULT HERE</p>
+<p>@Model.AverageGrade</p>
 
 <h4>List of Grades and Number of Students</h4>
-<p>RESULT HERE</p>
+<div>
+    <table border="1">
+        <tr>
+            <td>Grade</td>
+            <td>Number Of Students</td>
+        </tr>
+        @foreach (var item in Model.StudentGradeDetail)
+        {
+            <tr>
+                <td>@item.LetterGrade</td>
+                <td>@item.NumberOfStudents</td>
+            </tr>
+        }
+    </table>
+
+</div>
 
 <h4>List of Students Ordered By Grades Descending</h4>
-<p>RESULT HERE</p>
+<div>
+    <table border="1">
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Number Grade</td>
+            <td>Letter Grade</td>
+        </tr>
+        @foreach (var item in Model.ListOfStudents.OrderByDescending(x => x.NumberGrade))
+        {
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.NumberGrade</td>
+                <td>@item.LetterGrade</td>
+            </tr>
+        }
+    </table>
+
+</div>
+
+
 
