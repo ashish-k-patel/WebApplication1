@@ -10,7 +10,7 @@ namespace WebAppication1.Models
 
         public List<StudentGradeDetail> StudentGradeDetail { get; set; }
 
-        public List<StudentGrade> ListOfStudets { get; set; }
+        public List<StudentGrade> ListOfStudents { get; set; }
 
     }
 }
