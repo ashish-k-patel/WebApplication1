@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CodingTest.Models;
 using Microsoft.AspNetCore.Mvc;
+using WebAppication1.Models;
 
 namespace CodingTest.Controllers
 {
@@ -11,7 +12,8 @@ namespace CodingTest.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var listofLocations = LocationList;
+            return View(listofLocations);
         }
 
         private static Location LocationList = new Location
