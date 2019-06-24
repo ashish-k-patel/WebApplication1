@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CodingTest.Models
+namespace WebApplication1.Models
 {
     public class Location
     {
