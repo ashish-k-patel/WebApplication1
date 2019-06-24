@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CodingTest.Models;
 using Microsoft.AspNetCore.Mvc;
-using WebAppication1.Models;
+using WebApplication1.Models;
 
-namespace CodingTest.Controllers
+namespace WebApplication1.Controllers
 {
     public class LinqController : Controller
     {
@@ -16,10 +15,10 @@ namespace CodingTest.Controllers
             students.AverageGrade = GradeList.Select(x => x.NumberGrade).Average();
             students.StudentGradeDetail = GradeList.GroupBy(x=>x.LetterGrade).Select(g => new StudentGradeDetail()
             {
-                LetterGread =g.Key,
+                LetterGrade =g.Key,
                 NumberOfStudents =g.Count()
-            }).OrderBy(x=>x.LetterGread).ToList();
-            students.ListOfStudets = GradeList;
+            }).OrderBy(x=>x.LetterGrade).ToList();
+            students.ListOfStudents = GradeList;
             return View(students);
         }
         
