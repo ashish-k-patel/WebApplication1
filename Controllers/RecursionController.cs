@@ -2,11 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CodingTest.Models;
 using Microsoft.AspNetCore.Mvc;
-using WebAppication1.Models;
+using WebApplication1.Models;
 
-namespace CodingTest.Controllers
+namespace WebApplication1.Controllers
 {
     public class RecursionController : Controller
     {
